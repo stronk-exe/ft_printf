@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:04:24 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/30 02:16:46 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:36:50 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,11 @@ int	ft_putnbr(int n)
 	}
 	ft_putchar((i % 10) + '0');
 	if (n == 0)
-		size += 1;
-	if (n < 0)
-	{
-		i = n;
-		i *= -1;
-	}
-	while (i > 0)
-	{
-		i /= 10;
 		size++;
-	}
+	i = n;
+	if (n < 0)
+		i *= -1;
+	size = ft_count(size, i, 10);
 	return (size);
 }
 
@@ -89,55 +83,6 @@ int	ft_putunsigned(unsigned int n)
 	size = 0;
 	if (n == 0)
 		size++;
-	while (n > 0)
-	{
-		n /= 10;
-		size++;
-	}
-	return (size);
-}
-
-int	ft_puthexaup(unsigned long n, char c)
-{
-	unsigned long	i;
-	char			*base;
-	int				size;
-
-	i = n;
-	if (c == 'X')
-		base = "0123456789ABCDEF";
-	else
-		base = "0123456789abcdef";
-	if (i < 0)
-	{
-		ft_putchar('-');
-		i = -i;
-	}
-	if (i >= 16)
-		ft_puthexaup(i / 16, c);
-	ft_putchar(base[i % 16]);
-	size = 0;
-	if (n == 0)
-		size += 1;
-	if (n < 0)
-	{
-		i = n;
-		i *= -1;
-	}
-	while (i > 0)
-	{
-		i /= 16;
-		size++;
-	}
-	return (size);
-}
-
-int	ft_putaddress(unsigned long n)
-{
-	int	size;
-
-	ft_putstr("0x");
-	size = 2;
-	size += ft_puthexaup(n, 'x');
+	size = ft_count(size, n, 10);
 	return (size);
 }

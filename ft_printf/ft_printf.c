@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 15:26:47 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/30 02:17:00 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:37:18 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_arg(char c, va_list lst)
 	else if (c == 'i')
 		return (ft_putnbr(va_arg(lst, int)));
 	else if (c == 'X' || c == 'x')
-		return (ft_puthexaup(va_arg(lst, unsigned int), c));
+		return (ft_puthexa(va_arg(lst, unsigned int), c));
 	else if (c == 'p')
 		return (ft_putaddress(va_arg(lst, unsigned long)));
 	else if (c == '%')
